@@ -26,34 +26,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author juba
  */
-@Entity
-@Table(name = "LIVRE")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Livre.findAll", query = "SELECT l FROM Livre l"),
-    @NamedQuery(name = "Livre.findByTitreLvr", query = "SELECT l FROM Livre l WHERE l.titreLvr = :titreLvr"),
-    @NamedQuery(name = "Livre.findByAnneeLvr", query = "SELECT l FROM Livre l WHERE l.anneeLvr = :anneeLvr"),
-    @NamedQuery(name = "Livre.findByAuteurs", query = "SELECT l FROM Livre l WHERE l.auteurs = :auteurs"),
-    @NamedQuery(name = "Livre.findByIsbn", query = "SELECT l FROM Livre l WHERE l.isbn = :isbn")})
 public class Livre implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Size(max = 50)
-    @Column(name = "TITRE_LVR")
+
     private String titreLvr;
-    @Column(name = "ANNEE_LVR")
-    @Temporal(TemporalType.DATE)
+
     private Date anneeLvr;
-    @Size(max = 150)
-    @Column(name = "AUTEURS")
+
     private String auteurs;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "ISBN")
+
     private String isbn;
-    @JoinColumn(name = "NUM_ADH", referencedColumnName = "NUM_ADH")
-    @ManyToOne
+
     private Adherant numAdh;
 
     public Livre() {
@@ -127,5 +111,5 @@ public class Livre implements Serializable {
     public String toString() {
         return "ressourcesbiblio.Livre[ isbn=" + isbn + " ]";
     }
-    
+
 }

@@ -25,32 +25,13 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author juba
  */
-@Entity
-@Table(name = "ADHERANT")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Adherant.findAll", query = "SELECT a FROM Adherant a"),
-    @NamedQuery(name = "Adherant.findByNumAdh", query = "SELECT a FROM Adherant a WHERE a.numAdh = :numAdh"),
-    @NamedQuery(name = "Adherant.findByNomAdh", query = "SELECT a FROM Adherant a WHERE a.nomAdh = :nomAdh"),
-    @NamedQuery(name = "Adherant.findByPrenomAdh", query = "SELECT a FROM Adherant a WHERE a.prenomAdh = :prenomAdh"),
-    @NamedQuery(name = "Adherant.findByAdresseAdh", query = "SELECT a FROM Adherant a WHERE a.adresseAdh = :adresseAdh")})
 public class Adherant implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "NUM_ADH")
     private Integer numAdh;
-    @Size(max = 30)
-    @Column(name = "NOM_ADH")
     private String nomAdh;
-    @Size(max = 30)
-    @Column(name = "PRENOM_ADH")
     private String prenomAdh;
-    @Size(max = 30)
-    @Column(name = "ADRESSE_ADH")
     private String adresseAdh;
-    @OneToMany(mappedBy = "numAdh")
     private Collection<Livre> livreCollection;
 
     public Adherant() {
@@ -125,5 +106,5 @@ public class Adherant implements Serializable {
     public String toString() {
         return "ressourcesbiblio.Adherant[ numAdh=" + numAdh + " ]";
     }
-    
+
 }
